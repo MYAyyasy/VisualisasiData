@@ -1,3 +1,7 @@
 fastapi
 uvicorn
+pandas
+seaborn
+matplotlib
 jinja2
+python-multipart
