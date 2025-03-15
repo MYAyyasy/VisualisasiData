@@ -3,11 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastAPI on Vercel</title>
+    <title>Data Analysis App</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>{{ message }}</h1>
-    <p>API Python dengan FastAPI yang di-hosting di Vercel.</p>
+    <h1>Upload File CSV/Excel untuk Analisis</h1>
+    <form action="/upload/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept=".csv,.xlsx" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    {% if summary %}
+    <h2>Ringkasan Data</h2>
+    {{ summary | safe }}
+
+    <h2>Matriks Korelasi</h2>
+    {{ correlation_matrix | safe }}
+
+    <h2>Heatmap Korelasi</h2>
+    <img src="{{ heatmap }}" alt="Heatmap Korelasi">
+    {% endif %}
 </body>
 </html>
